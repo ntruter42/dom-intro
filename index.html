@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Phone Bill</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/grid/simple-grid.css">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+
+			<!-- CALCULATE BILL -->
+			<div id="calculate-widget" class="col-6 col-12-sm">
+				<h3 class="col-12-sm center">Calculate bill</h3>
+				<h5 class="col-12-sm">Enter bill string</h5>
+				<textarea id="calculate-string" class="col-12-sm" rows="2" name="name"></textarea>
+				<button id="calculate-button" class="col-12-sm" on type="button" name="button">Calculate</button>
+				<div class="col-12-sm">
+					<span>Total amount:</span>
+					<span id="calculate-total" class="bold">R0.00</span>
+				</div>
+			</div>
+
+			<!-- TEXT BILL -->
+			<div id="text-bill" class="col-6 col-12-sm">
+				<h3 class="center">Text input bill</h3>
+			</div>
+
+			<!-- RADIO BILL -->
+			<div id="radio-bill" class="col-6 col-12-sm">
+				<h3 class="center">Radio button bill</h3>
+			</div>
+
+			<!-- SETTINGS BILL -->
+			<div id="settings-bill" class="col-6 col-12-sm">
+				<h3 class="center">Bill with settings</h3>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
