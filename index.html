@@ -16,11 +16,13 @@
 		<div class="row">
 
 			<!-- CALCULATE BILL -->
-			<div id="calculate-widget" class="col-6 col-12-sm">
+			<div id="calculate-widget" class="col-12-sm col-6">
 				<h3 class="col-12-sm center">Calculate bill</h3>
 				<h5 class="col-12-sm">Enter bill string</h5>
-				<textarea id="calculate-string" class="col-12-sm" rows="2" name="name"></textarea>
-				<button id="calculate-button" class="col-12-sm" on type="button" name="button">Calculate</button>
+				<textarea id="calculate-string" class="col-12-sm" rows="2" name="name"
+					placeholder="Enter bill string here..."></textarea>
+				<button id="calculate-button" class="col-6-sm" on type="button" name="button">Calculate</button>
+				<button id="calculate-reset" class="col-6-sm" on type="reset" name="button">Reset</button>
 				<div class="col-12-sm">
 					<span>Total amount:</span>
 					<span id="calculate-total" class="bold">R0.00</span>
@@ -31,18 +33,23 @@
 			<div id="text-bill" class="col-6 col-12-sm">
 				<h3 class="center">Text input bill</h3>
 			</div>
+		</div>
 
-			<!-- RADIO BILL -->
-			<div id="radio-bill" class="col-6 col-12-sm">
-				<h3 class="center">Radio button bill</h3>
-			</div>
+		<!-- RADIO BILL -->
+		<div id="radio-bill" class="col-6 col-12-sm">
+			<h3 class="center">Radio button bill</h3>
+		</div>
 
-			<!-- SETTINGS BILL -->
-			<div id="settings-bill" class="col-6 col-12-sm">
-				<h3 class="center">Bill with settings</h3>
-			</div>
+		<!-- SETTINGS BILL -->
+		<div id="settings-bill" class="col-6 col-12-sm">
+			<h3 class="center">Bill with settings</h3>
 		</div>
 	</div>
+	</div>
+	<script src="js/calculate-bill.js" charset="utf-8"></script>
+	<script src="js/text-bill.js" charset="utf-8"></script>
+	<script src="js/radio-bill.js" charset="utf-8"></script>
+	<script src="js/settings-bill.js" charset="utf-8"></script>
 </body>
 
 </html>

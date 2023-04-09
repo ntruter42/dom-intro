@@ -1,9 +1,43 @@
-textarea {
+* {
 	box-sizing: border-box;
 }
 
+#calculate-string {
+	overflow: hidden;
+	resize: none;
+}
+
+.bold {
+	font-size: xx-large;
+	font-weight: bold;
+}
+
+.warning {
+	color: #fa0 !important;
+}
+
+.danger {
+	color: #c00 !important;
+}
+
+/* OUTLINES */
 .row {
-	outline: 1px solid red;
+	outline: 2px solid blue;
+}
+
+.col-1-sm,
+.col-2-sm,
+.col-3-sm,
+.col-4-sm,
+.col-5-sm,
+.col-6-sm,
+.col-7-sm,
+.col-8-sm,
+.col-9-sm,
+.col-10-sm,
+.col-11-sm,
+.col-12-sm {
+	outline: 1px solid magenta;
 }
 
 .col-1,
@@ -19,9 +53,4 @@ textarea {
 .col-11,
 .col-12 {
 	outline: 1px solid cyan;
-}
-
-.bold {
-	font-size: xx-large;
-	font-weight: bold;
 }
