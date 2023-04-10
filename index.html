@@ -25,13 +25,13 @@
 				<button id="calculate-reset" class="col-6-sm" on type="reset" name="button">Reset</button>
 
 				<div class="col-12-sm">
-					<span class="col-3-sm">Total amount:</span>
+					<span class="col-3-sm col-5">Total amount:</span>
 					<span id="calculate-total" class="bold">R0.00</span>
 				</div>
 			</div>
 
 			<!-- TEXT BILL -->
-			<div id="text-bill" class="col-6 col-12-sm">
+			<div id="text-bill" class="col-12-sm col-6">
 				<h3 class="center">Text input bill</h3>
 				<h5 class="col-12-sm">Bill type</h5>
 				<input id="text-string" class="col-6-sm" type="text" name="" value=""
@@ -41,30 +41,58 @@
 
 				<h5 class="col-12-sm">Totals</h5>
 				<div class="col-12-sm">
-					<span class="col-3-sm">Call total:</span>
-					<span id="text-call" class="col-3-sm">R0.00</span>
+					<span class="col-3-sm col-4">Call total:</span>
+					<span id="text-call-total" class="col-3-sm">R0.00</span>
 				</div>
 				<div class="col-12-sm">
-					<span class="col-3-sm">SMS total:</span>
-					<span id="text-sms" class="col-3-sm">R0.00</span>
+					<span class="col-3-sm col-4">SMS total:</span>
+					<span id="text-sms-total" class="col-3-sm">R0.00</span>
 				</div>
 				<div class="col-12-sm">
-					<span class="col-3-sm">Total amount:</span>
+					<span class="col-3-sm col-5">Total amount:</span>
 					<span id="text-total" class="bold">R0.00</span>
 				</div>
 			</div>
-		</div>
 
-		<!-- RADIO BILL -->
-		<div id="radio-bill" class="col-6 col-12-sm">
-			<h3 class="center">Radio button bill</h3>
-		</div>
+			<!-- RADIO BILL -->
+			<div id="radio-bill" class="col-12-sm col-6">
+				<h3 class="center">Radio button bill</h3>
+				<h5>Bill type</h5>
+				<div class="col-6-sm">
+					<div class="col-12-sm">
+						<input id="radio-call" type="radio" name="radio" value="call">
+						<span>Call</span>
+					</div>
+					<div class="col-12-sm">
+						<input id="radio-sms" class="" type="radio" name="radio" value="sms">
+						<span class="">SMS</span>
+					</div>
+				</div>
+				<div class="col-6-sm">
+					<button id="radio-button" class="col-12-sm" type="button" name="button">Add</button>
+					<button id="radio-reset" class="col-12-sm" type="reset" name="button">Reset</button>
+				</div>
 
-		<!-- SETTINGS BILL -->
-		<div id="settings-bill" class="col-6 col-12-sm">
-			<h3 class="center">Bill with settings</h3>
+				<h5 class="col-12-sm">Totals</h5>
+				<div class="col-12-sm">
+					<span class="col-3-sm col-4">Call total:</span>
+					<span id="radio-call-total" class="col-3-sm">R0.00</span>
+				</div>
+				<div class="col-12-sm">
+					<span class="col-3-sm col-4">SMS total:</span>
+					<span id="radio-sms-total" class="col-3-sm">R0.00</span>
+				</div>
+				<div class="col-12-sm">
+					<span class="col-3-sm col-5">Total amount:</span>
+					<span id="radio-total" class="bold">R0.00</span>
+				</div>
+			</div>
+
+			<!-- SETTINGS BILL -->
+			<div id="settings-bill" class="col-12-sm col-6">
+				<h3 class="center">Bill with settings</h3>
+			</div>
 		</div>
-	</div>
 	</div>
 	<script src="js/calculate-bill.js" charset="utf-8"></script>
 	<script src="js/text-bill.js" charset="utf-8"></script>

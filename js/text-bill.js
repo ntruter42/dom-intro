@@ -1,11 +1,11 @@
 // INPUT ELEMENTS
 const textString = document.querySelector("#text-string");
 const textButton = document.querySelector("#text-button");
-const resetButton = document.querySelector("#text-reset");
+const textReset = document.querySelector("#text-reset");
 
 // OUTPUT ELEMENTS
-const textCallTotal = document.querySelector("#text-call");
-const textSmsTotal = document.querySelector("#text-sms");
+const textCallTotal = document.querySelector("#text-call-total");
+const textSmsTotal = document.querySelector("#text-sms-total");
 const textTotal = document.querySelector("#text-total");
 
 let callTotal = 0;
@@ -42,4 +42,4 @@ function resetTextTotals() {
 	textTotal.innerHTML = "R0.00";
 	textTotal.classList.remove("warning", "danger");
 }
-resetButton.addEventListener('click', resetTextTotals);
+textReset.addEventListener('click', resetTextTotals);
