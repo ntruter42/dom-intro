@@ -8,18 +8,18 @@ const textCallTotal = document.querySelector("#text-call-total");
 const textSmsTotal = document.querySelector("#text-sms-total");
 const textTotal = document.querySelector("#text-total");
 
-let callTotal = 0;
-let smsTotal = 0;
+let callTextTotal = 0;
+let smsTextTotal = 0;
 
 function textButtonClicked() {
 	const textItem = textString.value.trim();
 
 	if (textItem === 'call') {
-		callTotal += 2.75;
+		callTextTotal += 2.75;
 	} else if (textItem === 'sms') {
-		smsTotal += 0.75;
+		smsTextTotal += 0.75;
 	}
-	const total = callTotal + smsTotal;
+	const total = callTextTotal + smsTextTotal;
 
 	textTotal.classList.remove("warning", "danger");
 	if (total > 50) {
@@ -28,15 +28,15 @@ function textButtonClicked() {
 		textTotal.classList.add("warning");
 	}
 
-	textCallTotal.innerHTML = "R" + callTotal.toFixed(2);
-	textSmsTotal.innerHTML = "R" + smsTotal.toFixed(2);
+	textCallTotal.innerHTML = "R" + callTextTotal.toFixed(2);
+	textSmsTotal.innerHTML = "R" + smsTextTotal.toFixed(2);
 	textTotal.innerHTML = "R" + total.toFixed(2);
 }
 textButton.addEventListener('click', textButtonClicked);
 
 function resetTextTotals() {
-	callTotal = 0;
-	smsTotal = 0;
+	callTextTotal = 0;
+	smsTextTotal = 0;
 	textCallTotal.innerHTML = "R0.00";
 	textSmsTotal.innerHTML = "R0.00";
 	textTotal.innerHTML = "R0.00";
