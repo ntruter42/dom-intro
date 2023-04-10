@@ -1,5 +1,6 @@
 const calculateString = document.querySelector("#calculate-string");
 const calculateButton = document.querySelector("#calculate-button");
+
 const calculateTotal = document.querySelector("#calculate-total");
 
 function calculateButtonClicked() {

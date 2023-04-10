@@ -17,14 +17,15 @@
 
 			<!-- CALCULATE BILL -->
 			<div id="calculate-widget" class="col-12-sm col-6">
-				<h3 class="col-12-sm center">Calculate bill</h3>
-				<h5 class="col-12-sm">Enter bill string</h5>
+				<h3 class="center">Calculate bill</h3>
+				<h5 class="col-12-sm">Bill string</h5>
 				<textarea id="calculate-string" class="col-12-sm" rows="2" name="name"
-					placeholder="Enter bill string here..."></textarea>
+					placeholder="Enter bill string here (eg. 'call,call,sms')"></textarea>
 				<button id="calculate-button" class="col-6-sm" on type="button" name="button">Calculate</button>
 				<button id="calculate-reset" class="col-6-sm" on type="reset" name="button">Reset</button>
+
 				<div class="col-12-sm">
-					<span>Total amount:</span>
+					<span class="col-3-sm">Total amount:</span>
 					<span id="calculate-total" class="bold">R0.00</span>
 				</div>
 			</div>
@@ -37,18 +38,19 @@
 					placeholder="Enter 'call' or 'sms' ">
 				<button id="text-button" class="col-3-sm" type="button" name="button">Add</button>
 				<button id="text-reset" class="col-3-sm" type="reset" name="button">Reset</button>
+
 				<h5 class="col-12-sm">Totals</h5>
 				<div class="col-12-sm">
-					<span class="col-3-sm">Call total</span>
-					<span id="text-sms-total" class="col-3-sm">R0.00</span>
+					<span class="col-3-sm">Call total:</span>
+					<span id="text-call" class="col-3-sm">R0.00</span>
 				</div>
 				<div class="col-12-sm">
-					<span class="col-3-sm">SMS total</span>
-					<span id="text-call-total" class="col-3-sm">R0.00</span>
+					<span class="col-3-sm">SMS total:</span>
+					<span id="text-sms" class="col-3-sm">R0.00</span>
 				</div>
 				<div class="col-12-sm">
-					<span class="col-3-sm">Total</span>
-					<span id="text-total" class="col-3-sm">R0.00</span>
+					<span class="col-3-sm">Total amount:</span>
+					<span id="text-total" class="bold">R0.00</span>
 				</div>
 			</div>
 		</div>
