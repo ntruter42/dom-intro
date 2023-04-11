@@ -20,6 +20,7 @@ let callSettingsCost = 0;
 let smsSettingsCost = 0;
 let warningLevel = 0;
 let crtiticalLevel = 0;
+let settingsTotalValue = 0;
 
 function settingsButtonClicked() {
 	const settingsChecked = document.querySelector("input[name='settings-bill-item']:checked").value.toLowerCase();
@@ -30,18 +31,18 @@ function settingsButtonClicked() {
 		} else if (settingsChecked === 'sms') {
 			smsSettingsTotal += smsSettingsCost;
 		}
-		const total = callSettingsTotal + smsSettingsTotal;
 
 		settingsTotal.classList.remove("warning", "danger");
-		if (total > crtiticalLevel) {
+		if (settingsTotalValue > crtiticalLevel) {
 			settingsTotal.classList.add("danger");
 		} else if (total > warningLevel) {
-			settingsTotal.classList.add("warning");
+			settingsTotalValue.classList.add("warning");
 		}
+		settingsTotalValue = callSettingsTotal + smsSettingsTotal;
 
 		settingsCallTotal.innerHTML = "R" + callSettingsTotal.toFixed(2);
 		settingsSmsTotal.innerHTML = "R" + smsSettingsTotal.toFixed(2);
-		settingsTotal.innerHTML = "R" + total.toFixed(2);
+		settingsTotal.innerHTML = "R" + settingsTotalValue.toFixed(2);
 	}
 }
 settingsButton.addEventListener('click', settingsButtonClicked);
@@ -61,5 +62,12 @@ function updateSettingsValues() {
 	smsSettingsCost = Number(settingsSmsCost.value);
 	warningLevel = Number(settingsWarningLevel.value);
 	crtiticalLevel = Number(settingsCriticalLevel.value);
+
+	settingsTotal.classList.remove("warning", "danger");
+	if (settingsTotalValue > crtiticalLevel) {
+		settingsTotal.classList.add("danger");
+	} else if (settingsTotalValue > warningLevel) {
+		settingsTotal.classList.add("warning");
+	}
 }
 settingsUpdate.addEventListener('click', updateSettingsValues);
