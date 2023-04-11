@@ -16,80 +16,138 @@
 		<div class="row">
 
 			<!-- CALCULATE BILL -->
-			<div id="calculate-widget" class="col-12-sm col-6">
+			<div class="col-12-sm col-6" id="calculate-widget">
 				<h3 class="center">Calculate bill</h3>
 				<h5 class="col-12-sm">Bill string</h5>
-				<textarea id="calculate-string" class="col-12-sm" rows="2" name="name"
+				<textarea class="col-12-sm" id="calculate-string" rows="2" name="name"
 					placeholder="Enter bill string here (eg. 'call,call,sms')"></textarea>
-				<button id="calculate-button" class="col-12-sm" on type="button" name="button">Calculate</button>
+				<button class="col-6-sm add-button" id="calculate-button" on type="button"
+					name="button">Calculate</button>
+				<button class="col-6-sm reset-button" id="calculate-reset" on type="reset" name="button">Reset</button>
 
 				<div class="col-12-sm">
 					<span class="col-3-sm col-5">Total amount:</span>
-					<span id="calculate-total" class="big">R0.00</span>
+					<span class="big" id="calculate-total">R0.00</span>
 				</div>
 			</div>
 
 			<!-- TEXT BILL -->
-			<div id="text-widget" class="col-12-sm col-6">
+			<div class="col-12-sm col-6" id="text-widget">
 				<h3 class="center">Text input bill</h3>
 				<h5 class="col-12-sm">Bill type</h5>
-				<input id="text-string" class="col-6-sm" type="text" name="" value=""
+				<input class="col-6-sm" id="text-string" type="text" name="" value=""
 					placeholder="Enter 'call' or 'sms' ">
-				<button id="text-button" class="col-3-sm" type="button" name="button">Add</button>
-				<button id="text-reset" class="col-3-sm" type="reset" name="button">Reset</button>
+				<button class="col-3-sm add-button" id="text-button" type="button" name="button">Add</button>
+				<button class="col-3-sm reset-button" id="text-reset" type="reset" name="button">Reset</button>
 
 				<h5 class="col-12-sm">Totals</h5>
 				<div class="col-12-sm">
 					<span class="col-3-sm col-4">Call total:</span>
-					<span id="text-call-total" class="col-3-sm bold">R0.00</span>
+					<span class="col-3-sm bold" id="text-call-total">R0.00</span>
 				</div>
 				<div class="col-12-sm">
 					<span class="col-3-sm col-4">SMS total:</span>
-					<span id="text-sms-total" class="col-3-sm bold">R0.00</span>
+					<span class="col-3-sm bold" id="text-sms-total">R0.00</span>
 				</div>
 				<div class="col-12-sm">
 					<span class="col-3-sm col-5">Total amount:</span>
-					<span id="text-total" class="big">R0.00</span>
+					<span class="big" id="text-total">R0.00</span>
 				</div>
 			</div>
 
 			<!-- RADIO BILL -->
-			<div id="radio-widget" class="col-12-sm col-6">
+			<div class="col-12-sm col-6" id="radio-widget">
 				<h3 class="center">Radio button bill</h3>
 				<h5 class="col-12-sm">Bill type</h5>
-				<div id="radio-select" class="col-6-sm">
+				<div class="col-6-sm" id="radio-select">
 					<div class="col-12-sm">
 						<input id="radio-call" type="radio" name="radio-bill-item" value="call">
 						<span>Call</span>
 					</div>
 					<div class="col-12-sm">
-						<input id="radio-sms" class="" type="radio" name="radio-bill-item" value="sms">
+						<input id="radio-sms" type="radio" name="radio-bill-item" value="sms">
 						<span class="">SMS</span>
 					</div>
 				</div>
 				<div class="col-6-sm">
-					<button id="radio-button" class="col-12-sm" type="button" name="button">Add</button>
-					<button id="radio-reset" class="col-12-sm" type="reset" name="button">Reset</button>
+					<button class="col-12-sm add-button" id="radio-button" type="button" name="button">Add</button>
+					<button class="col-12-sm reset-button" id="radio-reset" type="reset" name="button">Reset</button>
 				</div>
 
 				<h5 class="col-12-sm">Totals</h5>
 				<div class="col-12-sm">
 					<span class="col-3-sm col-4">Call total:</span>
-					<span id="radio-call-total" class="col-3-sm bold">R0.00</span>
+					<span class="col-3-sm bold" id="radio-call-total">R0.00</span>
 				</div>
 				<div class="col-12-sm">
 					<span class="col-3-sm col-4">SMS total:</span>
-					<span id="radio-sms-total" class="col-3-sm bold">R0.00</span>
+					<span class="col-3-sm bold" id="radio-sms-total">R0.00</span>
 				</div>
 				<div class="col-12-sm">
 					<span class="col-3-sm col-5">Total amount:</span>
-					<span id="radio-total" class="big">R0.00</span>
+					<span class="big" id="radio-total">R0.00</span>
 				</div>
 			</div>
 
 			<!-- SETTINGS BILL -->
 			<div id="settings-widget" class="col-12-sm col-6">
 				<h3 class="center">Bill with settings</h3>
+
+				<div class="col-6-sm">
+					<h5 class="col-12-sm">Bill type</h5>
+					<div class="col-12-sm" id="settings-select">
+						<div class="col-12-sm">
+							<input id="settings-call" type="radio" name="settings-bill-item" value="call">
+							<span>Call</span>
+						</div>
+						<div class="col-12-sm">
+							<input id="settings-sms" type="radio" name="settings-bill-item" value="sms">
+							<span>SMS</span>
+						</div>
+					</div>
+					<div class="col-12-sm">
+						<button class="col-12-sm add-button" id="settings-button" type="button"
+							name="button">Add</button>
+						<button class="col-12-sm reset-button" id="settings-reset" type=" reset"
+							name="button">Reset</button>
+					</div>
+
+					<h5 class="col-12-sm">Totals</h5>
+					<div class="col-12-sm">
+						<span class="col-8-sm">Call total:</span>
+						<span class="col-4-sm bold" id="settings-call-total">R0.00</span>
+					</div>
+					<div class="col-12-sm">
+						<span class="col-8-sm">SMS total:</span>
+						<span class="col-4-sm bold" id="settings-sms-total">R0.00</span>
+					</div>
+					<div class="col-12-sm">
+						<span class="col-12-sm">Total amount:</span>
+						<span class="big" id="settings-total">R0.00</span>
+					</div>
+				</div>
+
+				<div class="col-6-sm">
+					<h5 class="col-12-sm">Settings</h5>
+					<div class="col-12-sm">
+						<label class="row" for="exampleEmailInput">Call cost</label>
+						<input class="row" type="number" step="0.05" placeholder="eg. 2.55">
+					</div>
+					<div class="col-12-sm">
+						<label class="row" for="exampleEmailInput">SMS cost</label>
+						<input class="row" type="number" step="0.05" placeholder="eg. 0.65">
+					</div>
+					<div class="col-12-sm">
+						<label class="row" for="">Warning level</label>
+						<input class="row" type="number" step="0.05" placeholder="eg. 30.00">
+					</div>
+					<div class="col-12-sm">
+						<label class="row" for="">Critical level</label>
+						<input class="row" type="number" step="0.05" placeholder="eg. 65.00">
+					</div>
+					<button class="col-12-sm update-button" id="settings-update" type="button"
+						name="button">Update</button>
+				</div>
 			</div>
 		</div>
 	</div>

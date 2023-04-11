@@ -11,7 +11,7 @@ let callRadioTotal = 0;
 let smsRadioTotal = 0;
 
 function radioButtonClicked() {
-	const radioChecked = document.querySelector("input[name='radio-bill-item']:checked").value;
+	const radioChecked = document.querySelector("input[name='radio-bill-item']:checked").value.toLowerCase();
 	
 	if (radioChecked) {
 		if (radioChecked === 'call') {
