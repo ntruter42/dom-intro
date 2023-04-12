@@ -12,7 +12,7 @@ let callTextTotal = 0;
 let smsTextTotal = 0;
 
 function textButtonClicked() {
-	const textItem = textString.value.trim();
+	const textItem = textString.value.trim().toLowerCase();
 
 	if (textItem === 'call') {
 		callTextTotal += 2.75;
@@ -31,6 +31,7 @@ function textButtonClicked() {
 	textCallTotal.innerHTML = "R" + callTextTotal.toFixed(2);
 	textSmsTotal.innerHTML = "R" + smsTextTotal.toFixed(2);
 	textTotal.innerHTML = "R" + total.toFixed(2);
+	textString.focus();
 }
 textButton.addEventListener('click', textButtonClicked);
 
