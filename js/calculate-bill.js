@@ -1,6 +1,9 @@
+// INPUT ELEMENTS
 const calculateString = document.querySelector("#calculate-string");
 const calculateButton = document.querySelector("#calculate-button");
 const calculateReset = document.querySelector("#calculate-reset");
+
+// OUTPUT ELEMENTS
 const calculateTotal = document.querySelector("#calculate-total");
 
 

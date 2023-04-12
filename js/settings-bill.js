@@ -19,7 +19,7 @@ let smsSettingsTotal = 0;
 let callSettingsCost = 0;
 let smsSettingsCost = 0;
 let warningLevel = 0;
-let crtiticalLevel = 0;
+let criticalLevel = 0;
 let settingsTotalValue = 0;
 
 function settingsButtonClicked() {
@@ -33,7 +33,7 @@ function settingsButtonClicked() {
 		}
 
 		settingsTotal.classList.remove("warning", "danger");
-		if (settingsTotalValue > crtiticalLevel) {
+		if (settingsTotalValue > criticalLevel) {
 			settingsTotal.classList.add("danger");
 		} else if (total > warningLevel) {
 			settingsTotalValue.classList.add("warning");
@@ -61,10 +61,10 @@ function updateSettingsValues() {
 	callSettingsCost = Number(settingsCallCost.value);
 	smsSettingsCost = Number(settingsSmsCost.value);
 	warningLevel = Number(settingsWarningLevel.value);
-	crtiticalLevel = Number(settingsCriticalLevel.value);
+	criticalLevel = Number(settingsCriticalLevel.value);
 
 	settingsTotal.classList.remove("warning", "danger");
-	if (settingsTotalValue > crtiticalLevel) {
+	if (settingsTotalValue > criticalLevel) {
 		settingsTotal.classList.add("danger");
 	} else if (settingsTotalValue > warningLevel) {
 		settingsTotal.classList.add("warning");
