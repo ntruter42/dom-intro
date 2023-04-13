@@ -15,6 +15,7 @@ const message = {
 
 function calculateButtonClicked() {
 	const calculateItems = calculateString.value.split(",");
+	const invalidEntries = [];
 
 	let total = 0;
 	for (let item of calculateItems) {
@@ -25,9 +26,12 @@ function calculateButtonClicked() {
 			total += 0.75;
 		} else {
 			message.type = "warning";
-			message.text = "Invalid entries found";
+			message.text = "Invalid entries found - ";
+			invalidEntries.push(item);
 		}
 	}
+	message.text += invalidEntries;
+	displayMessage(message);
 
 	calculateTotal.classList.remove("warning", "danger");
 	if (total > 30) {
@@ -38,16 +42,16 @@ function calculateButtonClicked() {
 	
 	calculateTotal.innerHTML = "R" + total.toFixed(2);
 	calculateString.focus();
-	displayMessage(message);
 }
 calculateButton.addEventListener('click', calculateButtonClicked);
 
 function resetCalculateTotals() {
+	message.type = null;
+	displayMessage(message);
 	total = 0;
 	calculateTotal.innerHTML = "R0.00";
 	calculateTotal.classList.remove("warning", "danger");
 	calculateString.focus();
-	displayMessage();
 }
 calculateReset.addEventListener('click', resetCalculateTotals);
 

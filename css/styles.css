@@ -114,16 +114,16 @@ input[type=radio] {
 
 .warning {
 	color: #fa0 !important;
-	text-shadow: 1px 1px #000 !important;
+	text-shadow: 1px 1px 1px #000;
 }
 
 .danger {
 	color: #d00 !important;
-	text-shadow: 1px 1px #000 !important;
+	text-shadow: 1px 1px 1px #000;
 }
 
 .widget-selected {
-	background-image: linear-gradient(45deg, #caff, #facf) !important;
+	/* background-image: linear-gradient(#caff, #aaff, #aaf8, #fac0) !important; */
 	background-color: #fff !important;
 	outline: 1px solid #000f !important;
 	box-shadow: inset 1px 1px !important;
@@ -132,6 +132,21 @@ input[type=radio] {
 hr {
 	border-width: 0;
 	border-top: 2px solid #fff;
+}
+
+/* ANIMATIONS */
+.fade-out {
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+.scale {
+	transform: scale(1);
+	transition: transform 0.5s ease-out;
+}
+
+.scale-out {
+	transform: scale(0);
 }
 
 /* OUTLINES */
