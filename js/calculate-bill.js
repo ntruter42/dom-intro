@@ -5,11 +5,10 @@ const calculateReset = document.querySelector("#calculate-reset");
 
 // OUTPUT ELEMENTS
 const calculateTotal = document.querySelector("#calculate-total");
-const calculateMessage = document.querySelector("#calculate-message");
-const calculateMessageBox = calculateMessage.closest(".message-box");
 
 // FUNCTIONALITY
-let message = {
+const message = {
+	"widget": "calculate-message",
 	"type": null,
 	"text": ""
 };
@@ -24,6 +23,9 @@ function calculateButtonClicked() {
 			total += 2.75;
 		} else if (item === "sms") {
 			total += 0.75;
+		} else {
+			message.type = "warning";
+			message.text = "Invalid entries found";
 		}
 	}
 
@@ -33,10 +35,10 @@ function calculateButtonClicked() {
 	} else if (total > 20) {
 		calculateTotal.classList.add("warning");
 	}
-
+	
 	calculateTotal.innerHTML = "R" + total.toFixed(2);
 	calculateString.focus();
-	displayCalculateMessage();
+	displayMessage(message);
 }
 calculateButton.addEventListener('click', calculateButtonClicked);
 
@@ -44,31 +46,10 @@ function resetCalculateTotals() {
 	total = 0;
 	calculateTotal.innerHTML = "R0.00";
 	calculateTotal.classList.remove("warning", "danger");
+	calculateString.focus();
+	displayMessage();
 }
 calculateReset.addEventListener('click', resetCalculateTotals);
-calculateReset.addEventListener('click', displayCalculateMessage);
-
-function displayCalculateMessage() {
-	calculateMessageBox.classList.remove("message-box", "success-message", "warning-message", "error-message");
-	switch (message.type) {
-		case null:
-			calculateMessageBox.classList.add("hidden-sm");
-			break;
-		case "success":
-			calculateMessageBox.classList.add("message-box", "success-message");
-			break;
-		case "warning":
-			calculateMessageBox.classList.add("message-box", "warning-message");
-			break;
-		case "error":
-			calculateMessageBox.classList.add("message-box", "error-message");
-			break;
-		default:
-			break;
-	}
-
-	calculateMessage.innerHTML = message.text;
-}
 
 calculateString.addEventListener('input', () => {
 	calculateString.style.height = 'auto';

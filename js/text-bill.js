@@ -42,5 +42,6 @@ function resetTextTotals() {
 	textSmsTotal.innerHTML = "R0.00";
 	textTotal.innerHTML = "R0.00";
 	textTotal.classList.remove("warning", "danger");
+	textString.focus();
 }
 textReset.addEventListener('click', resetTextTotals);

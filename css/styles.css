@@ -114,16 +114,16 @@ input[type=radio] {
 
 .warning {
 	color: #fa0 !important;
-	text-shadow: 1px 1px #0008 !important;
+	text-shadow: 1px 1px #000 !important;
 }
 
 .danger {
 	color: #d00 !important;
-	text-shadow: 1px 1px #0008 !important;
+	text-shadow: 1px 1px #000 !important;
 }
 
 .widget-selected {
-	/* background-image: linear-gradient(45deg, #caf4, #fac4) !important; */
+	background-image: linear-gradient(45deg, #caff, #facf) !important;
 	background-color: #fff !important;
 	outline: 1px solid #000f !important;
 	box-shadow: inset 1px 1px !important;

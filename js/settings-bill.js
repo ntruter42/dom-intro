@@ -14,12 +14,12 @@ const settingsCallTotal = document.querySelector("#settings-call-total");
 const settingsSmsTotal = document.querySelector("#settings-sms-total");
 const settingsTotal = document.querySelector("#settings-total");
 
-// TOTALS
+// TOTALS VARIABLES
 let callSettingsTotal = 0;
 let smsSettingsTotal = 0;
 let totalSettingsValue = 0;
 
-// SETTINGS
+// SETTINGS VARIABLES
 let callSettingsCost = 2.75;
 let smsSettingsCost = 0.75;
 let warningLevel = 30;
@@ -70,17 +70,12 @@ settingsReset.addEventListener('click', resetSettingsTotals);
 
 // UPDATE BUTTON
 function updateSettingsValues() {
-	if (Number(settingsCallCost.value) > 0 &&
-		Number(settingsSmsCost.value) > 0 &&
-		Number(settingsWarningLevel.value) > 0 &&
-		Number(settingsCriticalLevel.value) > 0) {
-		callSettingsCost = Number(settingsCallCost.value);
-		smsSettingsCost = Number(settingsSmsCost.value);
-		warningLevel = Number(settingsWarningLevel.value);
-		criticalLevel = Number(settingsCriticalLevel.value);
+	Number(settingsCallCost.value) > 0 ? callSettingsCost = Number(settingsCallCost.value) : settingsCallCost.value = callSettingsCost;
+	Number(settingsSmsCost.value) > 0 ? smsSettingsCost = Number(settingsSmsCost.value) : settingsSmsCost.value = smsSettingsCost;
+	if (Number(settingsWarningLevel.value) < Number(settingsCriticalLevel.value)) {
+		Number(settingsWarningLevel.value) > 0 ? warningLevel = Number(settingsWarningLevel.value) : settingsWarningLevel.value = warningLevel;
+		Number(settingsCriticalLevel.value) > 0 ? criticalLevel = Number(settingsCriticalLevel.value) : settingsCriticalLevel.value = criticalLevel;
 	} else {
-		settingsCallCost.value = callSettingsCost;
-		settingsSmsCost.value = smsSettingsCost;
 		settingsWarningLevel.value = warningLevel;
 		settingsCriticalLevel.value = criticalLevel;
 	}
