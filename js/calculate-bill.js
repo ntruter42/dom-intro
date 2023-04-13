@@ -7,14 +7,16 @@ const calculateReset = document.querySelector("#calculate-reset");
 const calculateTotal = document.querySelector("#calculate-total");
 const calculateMessage = document.querySelector("#calculate-message");
 const calculateMessageBox = calculateMessage.closest(".message-box");
-// const calculateMessageBox = calculateMessage.parentElement;
 
 // FUNCTIONALITY
-let message = {"type":null, "text":""};
+let message = {
+	"type": null,
+	"text": ""
+};
 
 function calculateButtonClicked() {
 	const calculateItems = calculateString.value.split(",");
-	
+
 	let total = 0;
 	for (let item of calculateItems) {
 		item = item.trim().toLowerCase();
@@ -34,6 +36,7 @@ function calculateButtonClicked() {
 
 	calculateTotal.innerHTML = "R" + total.toFixed(2);
 	calculateString.focus();
+	displayCalculateMessage();
 }
 calculateButton.addEventListener('click', calculateButtonClicked);
 
@@ -49,15 +52,16 @@ function displayCalculateMessage() {
 	calculateMessageBox.classList.remove("message-box", "success-message", "warning-message", "error-message");
 	switch (message.type) {
 		case null:
+			calculateMessageBox.classList.add("hidden-sm");
 			break;
 		case "success":
-			calculateMessageBox.classList.add("success-message");
+			calculateMessageBox.classList.add("message-box", "success-message");
 			break;
 		case "warning":
-			calculateMessageBox.classList.add("warning-message");
+			calculateMessageBox.classList.add("message-box", "warning-message");
 			break;
 		case "error":
-			calculateMessageBox.classList.add("error-message");
+			calculateMessageBox.classList.add("message-box", "error-message");
 			break;
 		default:
 			break;
