@@ -5,7 +5,12 @@ const calculateReset = document.querySelector("#calculate-reset");
 
 // OUTPUT ELEMENTS
 const calculateTotal = document.querySelector("#calculate-total");
+const calculateMessage = document.querySelector("#calculate-message");
+const calculateMessageBox = calculateMessage.closest(".message-box");
+// const calculateMessageBox = calculateMessage.parentElement;
 
+// FUNCTIONALITY
+let message = {"type":null, "text":""};
 
 function calculateButtonClicked() {
 	const calculateItems = calculateString.value.split(",");
@@ -38,9 +43,30 @@ function resetCalculateTotals() {
 	calculateTotal.classList.remove("warning", "danger");
 }
 calculateReset.addEventListener('click', resetCalculateTotals);
+calculateReset.addEventListener('click', displayCalculateMessage);
 
-const textarea = document.querySelector('#calculate-string');
-textarea.addEventListener('input', () => {
-	textarea.style.height = 'auto';
-	textarea.style.height = (textarea.scrollHeight) + 'px';
+function displayCalculateMessage() {
+	calculateMessageBox.classList.remove("message-box", "success-message", "warning-message", "error-message");
+	switch (message.type) {
+		case null:
+			break;
+		case "success":
+			calculateMessageBox.classList.add("success-message");
+			break;
+		case "warning":
+			calculateMessageBox.classList.add("warning-message");
+			break;
+		case "error":
+			calculateMessageBox.classList.add("error-message");
+			break;
+		default:
+			break;
+	}
+
+	calculateMessage.innerHTML = message.text;
+}
+
+calculateString.addEventListener('input', () => {
+	calculateString.style.height = 'auto';
+	calculateString.style.height = (calculateString.scrollHeight) + 'px';
 });

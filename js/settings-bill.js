@@ -25,6 +25,9 @@ let smsSettingsCost = 0.75;
 let warningLevel = 30;
 let criticalLevel = 50;
 
+// SET DEFAULT VALUES
+updateSettingsValues();
+
 // ADD BUTTON
 function settingsButtonClicked() {
 	if (totalSettingsValue <= criticalLevel) {
@@ -67,10 +70,20 @@ settingsReset.addEventListener('click', resetSettingsTotals);
 
 // UPDATE BUTTON
 function updateSettingsValues() {
-	callSettingsCost = Number(settingsCallCost.value);
-	smsSettingsCost = Number(settingsSmsCost.value);
-	warningLevel = Number(settingsWarningLevel.value);
-	criticalLevel = Number(settingsCriticalLevel.value);
+	if (Number(settingsCallCost.value) > 0 &&
+		Number(settingsSmsCost.value) > 0 &&
+		Number(settingsWarningLevel.value) > 0 &&
+		Number(settingsCriticalLevel.value) > 0) {
+		callSettingsCost = Number(settingsCallCost.value);
+		smsSettingsCost = Number(settingsSmsCost.value);
+		warningLevel = Number(settingsWarningLevel.value);
+		criticalLevel = Number(settingsCriticalLevel.value);
+	} else {
+		settingsCallCost.value = callSettingsCost;
+		settingsSmsCost.value = smsSettingsCost;
+		settingsWarningLevel.value = warningLevel;
+		settingsCriticalLevel.value = criticalLevel;
+	}
 
 	settingsTotal.classList.remove("warning", "danger");
 	if (totalSettingsValue > criticalLevel) {
