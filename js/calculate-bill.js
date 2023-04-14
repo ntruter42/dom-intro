@@ -1,3 +1,9 @@
+/* KNOWN BUGS
+1. clicking too quickly after message display
+2. input: ",call"
+3. input: "call,"
+*/
+
 // INPUT ELEMENTS
 const calculateString = document.querySelector("#calculate-string");
 const calculateButton = document.querySelector("#calculate-button");
@@ -6,12 +12,8 @@ const calculateReset = document.querySelector("#calculate-reset");
 // OUTPUT ELEMENTS
 const calculateTotal = document.querySelector("#calculate-total");
 
-// FUNCTIONALITY
-const message = {
-	"widget": "calculate-message",
-	"type": null,
-	"text": ""
-};
+// FUNCTIONALITY VARIABLES
+message.widget = "calculate-message";
 
 function calculateButtonClicked() {
 	const calculateItems = calculateString.value.split(",");
@@ -24,6 +26,9 @@ function calculateButtonClicked() {
 			total += 2.75;
 		} else if (item === "sms") {
 			total += 0.75;
+		} else if (calculateItems.length === 1 && item === "") {
+			message.type = "error";
+			message.text = "String must contain at least one entry";
 		} else {
 			message.type = "warning";
 			message.text = "Invalid entries found - ";
@@ -31,8 +36,7 @@ function calculateButtonClicked() {
 		}
 	}
 	message.text += invalidEntries;
-	displayMessage(message);
-
+	
 	calculateTotal.classList.remove("warning", "danger");
 	if (total > 30) {
 		calculateTotal.classList.add("danger");
@@ -42,16 +46,20 @@ function calculateButtonClicked() {
 	
 	calculateTotal.innerHTML = "R" + total.toFixed(2);
 	calculateString.focus();
+
+	displayMessage(message);
 }
 calculateButton.addEventListener('click', calculateButtonClicked);
 
 function resetCalculateTotals() {
-	message.type = null;
-	displayMessage(message);
 	total = 0;
 	calculateTotal.innerHTML = "R0.00";
 	calculateTotal.classList.remove("warning", "danger");
 	calculateString.focus();
+
+	message.type = "success";
+	message.text = "Totals have been reset";
+	displayMessage(message);
 }
 calculateReset.addEventListener('click', resetCalculateTotals);
 

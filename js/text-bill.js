@@ -8,8 +8,12 @@ const textCallTotal = document.querySelector("#text-call-total");
 const textSmsTotal = document.querySelector("#text-sms-total");
 const textTotal = document.querySelector("#text-total");
 
+// TOTALS VARIABLES
 let callTextTotal = 0;
 let smsTextTotal = 0;
+
+// FUNCTIONALITY VARIABLES
+message.widget = "text-message";
 
 function textButtonClicked() {
 	const textItem = textString.value.trim().toLowerCase();
@@ -18,6 +22,12 @@ function textButtonClicked() {
 		callTextTotal += 2.75;
 	} else if (textItem === 'sms') {
 		smsTextTotal += 0.75;
+	} else if (textItem === "") {
+		message.type = "error";
+		message.text = "String can't be empty";
+	} else {
+		message.type = "error";
+		message.text = "Expected 'call' or 'sms'";
 	}
 	const total = callTextTotal + smsTextTotal;
 
@@ -32,6 +42,8 @@ function textButtonClicked() {
 	textSmsTotal.innerHTML = "R" + smsTextTotal.toFixed(2);
 	textTotal.innerHTML = "R" + total.toFixed(2);
 	textString.focus();
+
+	displayMessage(message);
 }
 textButton.addEventListener('click', textButtonClicked);
 
