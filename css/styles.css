@@ -28,7 +28,9 @@ button:focus:not(:active) {
 
 .add-button,
 .update-button {
-	background-color: #fff;
+	/* background-image: linear-gradient(45deg, #caf, #fac) !important;
+	color: #fff !important; */
+	text-shadow: none;
 }
 
 .reset-button {
@@ -123,7 +125,6 @@ input[type=radio] {
 }
 
 .widget-selected {
-	/* background-image: linear-gradient(#caff, #aaff, #aaf8, #fac0) !important; */
 	background-color: #fff !important;
 	outline: 1px solid #000f !important;
 	box-shadow: inset 1px 1px !important;

@@ -12,9 +12,6 @@ const calculateReset = document.querySelector("#calculate-reset");
 // OUTPUT ELEMENTS
 const calculateTotal = document.querySelector("#calculate-total");
 
-// FUNCTIONALITY VARIABLES
-message.widget = "calculate-message";
-
 function calculateButtonClicked() {
 	const calculateItems = calculateString.value.split(",");
 	const invalidEntries = [];
@@ -47,6 +44,7 @@ function calculateButtonClicked() {
 	calculateTotal.innerHTML = "R" + total.toFixed(2);
 	calculateString.focus();
 
+	message.widget = "calculate-message";
 	displayMessage(message);
 }
 calculateButton.addEventListener('click', calculateButtonClicked);
@@ -59,6 +57,7 @@ function resetCalculateTotals() {
 
 	message.type = "success";
 	message.text = "Totals have been reset";
+	message.widget = "calculate-message";
 	displayMessage(message);
 }
 calculateReset.addEventListener('click', resetCalculateTotals);

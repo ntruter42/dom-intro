@@ -12,9 +12,6 @@ const textTotal = document.querySelector("#text-total");
 let callTextTotal = 0;
 let smsTextTotal = 0;
 
-// FUNCTIONALITY VARIABLES
-message.widget = "text-message";
-
 function textButtonClicked() {
 	const textItem = textString.value.trim().toLowerCase();
 
@@ -43,6 +40,7 @@ function textButtonClicked() {
 	textTotal.innerHTML = "R" + total.toFixed(2);
 	textString.focus();
 
+	message.widget = "text-message";
 	displayMessage(message);
 }
 textButton.addEventListener('click', textButtonClicked);
@@ -55,5 +53,10 @@ function resetTextTotals() {
 	textTotal.innerHTML = "R0.00";
 	textTotal.classList.remove("warning", "danger");
 	textString.focus();
+
+	message.type = "success";
+	message.text = "Totals have been reset";
+	message.widget = "text-message";
+	displayMessage(message);
 }
 textReset.addEventListener('click', resetTextTotals);
