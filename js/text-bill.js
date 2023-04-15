@@ -12,6 +12,39 @@ const textTotal = document.querySelector("#text-total");
 let callTextTotal = 0;
 let smsTextTotal = 0;
 
+function textValidation() {
+	const textInput = textString.value.trim().toLowerCase();
+	const success = "success-input";
+	const warning = "warning-input";
+	const error = "error-input";
+
+	switch (textInput) {
+		case "":
+			textString.classList.remove(success, warning, error);
+			break;
+		case "call":
+		case "sms":
+			textString.classList.remove(warning, error);
+			textString.classList.add(success);
+			break;
+		case "c":
+		case "ca":
+		case "cal":
+		case "s":
+		case "sm":
+			textString.classList.remove(success, error);
+			textString.classList.add(warning);
+			break;
+		default:
+			textString.classList.remove(success, warning);
+			textString.classList.add(error);
+			break;
+	}
+}
+document.addEventListener('DOMContentLoaded', () => {
+	textString.addEventListener('input', textValidation);
+});
+
 function textButtonClicked() {
 	const textItem = textString.value.trim().toLowerCase();
 
@@ -21,7 +54,7 @@ function textButtonClicked() {
 		smsTextTotal += 0.75;
 	} else if (textItem === "") {
 		message.type = "error";
-		message.text = "String can't be empty";
+		message.text = "String can't be empty.";
 	} else {
 		message.type = "error";
 		message.text = "Expected 'call' or 'sms'.";

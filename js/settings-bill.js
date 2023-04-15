@@ -26,7 +26,7 @@ let warningLevel = 30;
 let criticalLevel = 50;
 
 // SET DEFAULT VALUES
-updateSettingsValues();
+updateSettingsValues(true);
 
 // ADD BUTTON
 function settingsButtonClicked() {
@@ -80,36 +80,56 @@ function resetSettingsTotals() {
 settingsReset.addEventListener('click', resetSettingsTotals);
 
 // UPDATE BUTTON
-function updateSettingsValues() {
+function updateSettingsValues(init=false) {
+	const revertedSettings = [];
+
+	if (init === true) {
+		settingsCallCost.value = callSettingsCost;
+		settingsSmsCost.value = smsSettingsCost;
+		settingsWarningLevel.value = warningLevel;
+		settingsCriticalLevel.value = criticalLevel;
+	}
+
 	if (Number(settingsCallCost.value) > 0) {
-		callSettingsCost = Number(settingsCallCost.value);
+		callSettingsCost = Number(settingsCallCost.value).toFixed(2);
 	} else {
+		message.type = "error";
+		revertedSettings.push("Call cost");
 		settingsCallCost.value = callSettingsCost;
 	}
 
 	if (Number(settingsSmsCost.value) > 0) {
-		smsSettingsCost = Number(settingsSmsCost.value);
+		smsSettingsCost = Number(settingsSmsCost.value).toFixed(2);
 	} else {
+		message.type = "error";
+		revertedSettings.push("SMS cost");
 		settingsSmsCost.value = smsSettingsCost;
 	}
 
 	if (Number(settingsWarningLevel.value) < Number(settingsCriticalLevel.value)) {
 		if (Number(settingsWarningLevel.value) > 0) {
-			warningLevel = Number(settingsWarningLevel.value);
+			warningLevel = Number(settingsWarningLevel.value).toFixed(2);
 		} else {
+			message.type = "error";
+			revertedSettings.push("Warning level");
 			settingsWarningLevel.value = warningLevel;
 		}
 
 		if (Number(settingsCriticalLevel.value) > 0) {
-			criticalLevel = Number(settingsCriticalLevel.value);
+			criticalLevel = Number(settingsCriticalLevel.value).toFixed(2);
 		} else {
+			message.type = "error";
+			revertedSettings.push("Critical level");
 			settingsCriticalLevel.value = criticalLevel;
 		}
+		message.text = "The following settings have been reverted due to invalid input:";
+		message.text += "<br>" + revertedSettings + ".";
 	} else {
 		settingsWarningLevel.value = warningLevel;
 		settingsCriticalLevel.value = criticalLevel;
 		message.type = "error";
-		message.text = "Warning level cannot be less than critical level.<br>Warning and critical levels reverted.";
+		message.text = "Warning level cannot be less than critical level.";
+		message.text += "<br>Both levels have been reverted.";
 	}
 
 	settingsTotal.classList.remove("warning", "danger");
@@ -119,6 +139,10 @@ function updateSettingsValues() {
 		settingsTotal.classList.add("warning");
 	}
 
+	if (init !== true && message.type !== "error" && message.type !== "warning") {
+		message.type = "success";
+		message.text = "Settings have been updated.";
+	}
 	message.widget = "settings-message";
 	displayMessage(message);
 }

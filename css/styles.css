@@ -64,6 +64,11 @@ code {
 	box-shadow: 2px 2px;
 }
 
+.textarea-container {
+	position: relative;
+	display: inline-block;
+}
+
 #calculate-string {
 	overflow: hidden;
 	resize: none;
@@ -97,6 +102,18 @@ code {
 .error-message {
 	outline: 1px solid #f00;
 	background-color: #f004;
+}
+
+.success-input {
+	background-color: #0d04 !important;
+}
+
+.warning-input {
+	background-color: #fc04 !important;
+}
+
+.error-input {
+	background-color: #f004 !important;
 }
 
 input[type=radio] {

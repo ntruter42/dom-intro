@@ -4,7 +4,7 @@ var message = {
 	"text": ""
 };
 
-let timeoutID;
+let displayTimeout;
 
 function displayMessage(widgetMessage) {
 	const messageContent = document.getElementById(widgetMessage.widget);
@@ -33,12 +33,12 @@ function displayMessage(widgetMessage) {
 	messageContent.innerHTML = widgetMessage.text;
 
 	// Clear timeout
-	clearTimeout(timeoutID);
+	clearTimeout(displayTimeout);
 
 	// Set time to display message
 	const duration = widgetMessage.text.length * 100;
 	messageBox.classList.add("scale");
-	timeoutID = setTimeout(function () {
+	displayTimeout = setTimeout(function () {
 		messageBox.classList.add("scale-out");
 		setTimeout(function () {
 			messageBox.classList.add("hidden-sm");
