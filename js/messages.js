@@ -8,11 +8,9 @@ function displayMessage(widgetMessage) {
 
 	const messageContent = document.getElementById(widgetMessage.widget);
 	const messageBox = messageContent.closest(".message-box");
-	const transition = { "type": "scale-out", "time": 500 };
 
-	if (widgetMessage.type !== "reset") {
-		messageBox.classList.remove("hidden-sm", "success-message", "warning-message", "error-message");
-	}
+	// Set message box color
+	messageBox.classList.remove("hidden-sm", "success-message", "warning-message", "error-message");
 	switch (widgetMessage.type) {
 		case null:
 			messageBox.classList.add("hidden-sm");
@@ -30,17 +28,24 @@ function displayMessage(widgetMessage) {
 			break;
 	}
 
+	// Set message text to display
 	messageContent.innerHTML = widgetMessage.text;
 
-	const duration = widgetMessage.text.length * (50 + (transition.time / 10));
+	// Set time to display message
+	const duration = widgetMessage.text.length * 60;
 	messageBox.classList.add("scale");
 	setTimeout(function () {
-		messageBox.classList.add(transition.type);
+		messageBox.classList.add("scale-out");
 		setTimeout(function () {
 			messageBox.classList.add("hidden-sm");
-			messageBox.classList.remove("scale", transition.type);
-		}, transition.time);
+			messageBox.classList.remove("scale", "scale-out");
+		}, 500);
 	}, duration);
 
-	widgetMessage.type = null;
+	// Reset message configuration
+	message = {
+		"widget": null,
+		"type": null,
+		"text": ""
+	};
 }

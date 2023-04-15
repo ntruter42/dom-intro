@@ -40,8 +40,10 @@ function textButtonClicked() {
 	textTotal.innerHTML = "R" + total.toFixed(2);
 	textString.focus();
 
-	message.widget = "text-message";
-	displayMessage(message);
+	if (message.type !== null) {
+		message.widget = "text-message";
+		displayMessage(message);
+	}
 }
 textButton.addEventListener('click', textButtonClicked);
 

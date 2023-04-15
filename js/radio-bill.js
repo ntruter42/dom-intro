@@ -11,12 +11,12 @@ let callRadioTotal = 0;
 let smsRadioTotal = 0;
 
 function radioButtonClicked() {
-	const radioChecked = document.querySelector("input[name='radio-bill-item']:checked").value;
-	
+	const radioChecked = document.querySelector("input[name='radio-bill-item']:checked");
+
 	if (radioChecked) {
-		if (radioChecked === 'call') {
+		if (radioChecked.value === 'call') {
 			callRadioTotal += 2.75;
-		} else if (radioChecked === 'sms') {
+		} else if (radioChecked.value === 'sms') {
 			smsRadioTotal += 0.75;
 		}
 		const total = callRadioTotal + smsRadioTotal;
@@ -31,7 +31,13 @@ function radioButtonClicked() {
 		radioCallTotal.innerHTML = "R" + callRadioTotal.toFixed(2);
 		radioSmsTotal.innerHTML = "R" + smsRadioTotal.toFixed(2);
 		radioTotal.innerHTML = "R" + total.toFixed(2);
+	} else {
+		message.type = "error";
+		message.text = "Select a bill type";
 	}
+
+	message.widget = "radio-message";
+	displayMessage(message);
 }
 radioButton.addEventListener('click', radioButtonClicked);
 
@@ -42,5 +48,10 @@ function resetRadioTotals() {
 	radioSmsTotal.innerHTML = "R0.00";
 	radioTotal.innerHTML = "R0.00";
 	radioTotal.classList.remove("warning", "danger");
+
+	message.type = "success";
+	message.text = "Totals have been reset";
+	message.widget = "radio-message";
+	displayMessage(message);
 }
 radioReset.addEventListener('click', resetRadioTotals);

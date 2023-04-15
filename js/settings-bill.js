@@ -31,12 +31,12 @@ updateSettingsValues();
 // ADD BUTTON
 function settingsButtonClicked() {
 	if (totalSettingsValue <= criticalLevel) {
-		const settingsChecked = document.querySelector("input[name='settings-bill-item']:checked").value;
+		const settingsChecked = document.querySelector("input[name='settings-bill-item']:checked");
 
 		if (settingsChecked) {
-			if (settingsChecked === 'call') {
+			if (settingsChecked.value === 'call') {
 				callSettingsTotal += callSettingsCost;
-			} else if (settingsChecked === 'sms') {
+			} else if (settingsChecked.value === 'sms') {
 				smsSettingsTotal += smsSettingsCost;
 			}
 			totalSettingsValue = callSettingsTotal + smsSettingsTotal;
@@ -51,8 +51,14 @@ function settingsButtonClicked() {
 			settingsCallTotal.innerHTML = "R" + callSettingsTotal.toFixed(2);
 			settingsSmsTotal.innerHTML = "R" + smsSettingsTotal.toFixed(2);
 			settingsTotal.innerHTML = "R" + totalSettingsValue.toFixed(2);
+		} else {
+			message.type = "error";
+			message.text = "Select a bill type";
 		}
 	}
+
+	message.widget = "settings-message";
+	displayMessage(message);
 }
 settingsButton.addEventListener('click', settingsButtonClicked);
 
@@ -65,6 +71,11 @@ function resetSettingsTotals() {
 	settingsSmsTotal.innerHTML = "R0.00";
 	settingsTotal.innerHTML = "R0.00";
 	settingsTotal.classList.remove("warning", "danger");
+
+	message.type = "success";
+	message.text = "Totals have been reset";
+	message.widget = "settings-message";
+	displayMessage(message);
 }
 settingsReset.addEventListener('click', resetSettingsTotals);
 
@@ -86,5 +97,8 @@ function updateSettingsValues() {
 	} else if (totalSettingsValue > warningLevel) {
 		settingsTotal.classList.add("warning");
 	}
+
+	message.widget = "settings-message";
+	displayMessage(message);
 }
 settingsUpdate.addEventListener('click', updateSettingsValues);

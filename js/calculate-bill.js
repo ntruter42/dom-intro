@@ -33,19 +33,21 @@ function calculateButtonClicked() {
 		}
 	}
 	message.text += invalidEntries;
-	
+
 	calculateTotal.classList.remove("warning", "danger");
 	if (total > 30) {
 		calculateTotal.classList.add("danger");
 	} else if (total > 20) {
 		calculateTotal.classList.add("warning");
 	}
-	
+
 	calculateTotal.innerHTML = "R" + total.toFixed(2);
 	calculateString.focus();
 
-	message.widget = "calculate-message";
-	displayMessage(message);
+	if (message.type !== null) {
+		message.widget = "calculate-message";
+		displayMessage(message);
+	}
 }
 calculateButton.addEventListener('click', calculateButtonClicked);
 
