@@ -79,8 +79,15 @@ function resetSettingsTotals() {
 }
 settingsReset.addEventListener('click', resetSettingsTotals);
 
+//
+//
+// TODO: FIX THE UPDATE BUTTON
+// VALUES NOT CHANGING ON CLICK
+//
+//
+
 // UPDATE BUTTON
-function updateSettingsValues(init=false) {
+function updateSettingsValues(init = false) {
 	const revertedSettings = [];
 
 	if (init === true) {
