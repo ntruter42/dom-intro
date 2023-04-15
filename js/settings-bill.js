@@ -53,7 +53,7 @@ function settingsButtonClicked() {
 			settingsTotal.innerHTML = "R" + totalSettingsValue.toFixed(2);
 		} else {
 			message.type = "error";
-			message.text = "Select a bill type";
+			message.text = "Select a bill type.";
 		}
 	}
 
@@ -73,7 +73,7 @@ function resetSettingsTotals() {
 	settingsTotal.classList.remove("warning", "danger");
 
 	message.type = "success";
-	message.text = "Totals have been reset";
+	message.text = "Totals have been reset.";
 	message.widget = "settings-message";
 	displayMessage(message);
 }
@@ -81,14 +81,35 @@ settingsReset.addEventListener('click', resetSettingsTotals);
 
 // UPDATE BUTTON
 function updateSettingsValues() {
-	Number(settingsCallCost.value) > 0 ? callSettingsCost = Number(settingsCallCost.value) : settingsCallCost.value = callSettingsCost;
-	Number(settingsSmsCost.value) > 0 ? smsSettingsCost = Number(settingsSmsCost.value) : settingsSmsCost.value = smsSettingsCost;
+	if (Number(settingsCallCost.value) > 0) {
+		callSettingsCost = Number(settingsCallCost.value);
+	} else {
+		settingsCallCost.value = callSettingsCost;
+	}
+
+	if (Number(settingsSmsCost.value) > 0) {
+		smsSettingsCost = Number(settingsSmsCost.value);
+	} else {
+		settingsSmsCost.value = smsSettingsCost;
+	}
+
 	if (Number(settingsWarningLevel.value) < Number(settingsCriticalLevel.value)) {
-		Number(settingsWarningLevel.value) > 0 ? warningLevel = Number(settingsWarningLevel.value) : settingsWarningLevel.value = warningLevel;
-		Number(settingsCriticalLevel.value) > 0 ? criticalLevel = Number(settingsCriticalLevel.value) : settingsCriticalLevel.value = criticalLevel;
+		if (Number(settingsWarningLevel.value) > 0) {
+			warningLevel = Number(settingsWarningLevel.value);
+		} else {
+			settingsWarningLevel.value = warningLevel;
+		}
+
+		if (Number(settingsCriticalLevel.value) > 0) {
+			criticalLevel = Number(settingsCriticalLevel.value);
+		} else {
+			settingsCriticalLevel.value = criticalLevel;
+		}
 	} else {
 		settingsWarningLevel.value = warningLevel;
 		settingsCriticalLevel.value = criticalLevel;
+		message.type = "error";
+		message.text = "Warning level cannot be less than critical level.<br>Warning and critical levels reverted.";
 	}
 
 	settingsTotal.classList.remove("warning", "danger");

@@ -4,8 +4,9 @@ var message = {
 	"text": ""
 };
 
-function displayMessage(widgetMessage) {
+let timeoutID;
 
+function displayMessage(widgetMessage) {
 	const messageContent = document.getElementById(widgetMessage.widget);
 	const messageBox = messageContent.closest(".message-box");
 
@@ -31,15 +32,18 @@ function displayMessage(widgetMessage) {
 	// Set message text to display
 	messageContent.innerHTML = widgetMessage.text;
 
+	// Clear timeout
+	clearTimeout(timeoutID);
+
 	// Set time to display message
-	const duration = widgetMessage.text.length * 60;
+	const duration = widgetMessage.text.length * 100;
 	messageBox.classList.add("scale");
-	setTimeout(function () {
+	timeoutID = setTimeout(function () {
 		messageBox.classList.add("scale-out");
 		setTimeout(function () {
 			messageBox.classList.add("hidden-sm");
 			messageBox.classList.remove("scale", "scale-out");
-		}, 500);
+		}, 200);
 	}, duration);
 
 	// Reset message configuration

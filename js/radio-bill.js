@@ -33,7 +33,7 @@ function radioButtonClicked() {
 		radioTotal.innerHTML = "R" + total.toFixed(2);
 	} else {
 		message.type = "error";
-		message.text = "Select a bill type";
+		message.text = "Select a bill type.";
 	}
 
 	message.widget = "radio-message";
@@ -50,7 +50,7 @@ function resetRadioTotals() {
 	radioTotal.classList.remove("warning", "danger");
 
 	message.type = "success";
-	message.text = "Totals have been reset";
+	message.text = "Totals have been reset.";
 	message.widget = "radio-message";
 	displayMessage(message);
 }

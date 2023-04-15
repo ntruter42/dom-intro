@@ -143,12 +143,12 @@ hr {
 
 .scale {
 	transform: scale(1);
-	transition: transform 0.5s ease-out;
+	transition: transform 0.4s ease-out;
 }
 
 .scale-out {
 	transform: scale(0);
-	transition: transform 0.5s ease-out;
+	transition: transform 0.4s ease-out;
 }
 
 /* OUTLINES */

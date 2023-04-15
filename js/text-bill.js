@@ -24,7 +24,7 @@ function textButtonClicked() {
 		message.text = "String can't be empty";
 	} else {
 		message.type = "error";
-		message.text = "Expected 'call' or 'sms'";
+		message.text = "Expected 'call' or 'sms'.";
 	}
 	const total = callTextTotal + smsTextTotal;
 
@@ -57,7 +57,7 @@ function resetTextTotals() {
 	textString.focus();
 
 	message.type = "success";
-	message.text = "Totals have been reset";
+	message.text = "Totals have been reset.";
 	message.widget = "text-message";
 	displayMessage(message);
 }

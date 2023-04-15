@@ -58,7 +58,7 @@ function resetCalculateTotals() {
 	calculateString.focus();
 
 	message.type = "success";
-	message.text = "Totals have been reset";
+	message.text = "Totals have been reset.";
 	message.widget = "calculate-message";
 	displayMessage(message);
 }
