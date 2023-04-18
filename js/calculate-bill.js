@@ -52,13 +52,19 @@ function calculateButtonClicked() {
 calculateButton.addEventListener('click', calculateButtonClicked);
 
 function resetCalculateTotals() {
-	total = 0;
-	calculateTotal.innerHTML = "R0.00";
-	calculateTotal.classList.remove("warning", "danger");
-	calculateString.focus();
-
-	message.type = "success";
-	message.text = "Totals have been reset.";
+	console.log(calculateTotal.value);
+	if (calculateTotal.innerHTML === "R0.00") {
+		message.type = "warning";
+		message.text = "Total is already set to R0.00.";
+	} else {
+		total = 0;
+		calculateTotal.innerHTML = "R0.00";
+		calculateTotal.classList.remove("warning", "danger");
+		calculateString.focus();
+		
+		message.type = "success";
+		message.text = "Totals have been reset.";
+	}
 	message.widget = "calculate-message";
 	displayMessage(message);
 }
