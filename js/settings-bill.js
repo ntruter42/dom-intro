@@ -32,25 +32,26 @@ updateSettingsValues(true);
 function settingsButtonClicked() {
 	if (totalSettingsValue <= criticalLevel) {
 		const settingsChecked = document.querySelector("input[name='settings-bill-item']:checked");
-
+		
+		console.log(callSettingsTotal);
 		if (settingsChecked) {
 			if (settingsChecked.value === 'call') {
-				callSettingsTotal += callSettingsCost;
+				callSettingsTotal += Number(callSettingsCost);
 			} else if (settingsChecked.value === 'sms') {
-				smsSettingsTotal += smsSettingsCost;
+				smsSettingsTotal += Number(smsSettingsCost);
 			}
 			totalSettingsValue = callSettingsTotal + smsSettingsTotal;
 
 			settingsTotal.classList.remove("warning", "danger");
 			if (totalSettingsValue > criticalLevel) {
 				settingsTotal.classList.add("danger");
-			} else if (totalSettingsValue > warningLevel) {
+			} else if (totalSettingsValue > Number(warningLevel)) {
 				settingsTotal.classList.add("warning");
 			}
 
-			settingsCallTotal.innerHTML = "R" + callSettingsTotal.toFixed(2);
-			settingsSmsTotal.innerHTML = "R" + smsSettingsTotal.toFixed(2);
-			settingsTotal.innerHTML = "R" + totalSettingsValue.toFixed(2);
+			settingsCallTotal.innerHTML = "R" + Number(callSettingsTotal).toFixed(2);
+			settingsSmsTotal.innerHTML = "R" + Number(smsSettingsTotal).toFixed(2);
+			settingsTotal.innerHTML = "R" + Number(totalSettingsValue).toFixed(2);
 		} else {
 			message.type = "error";
 			message.text = "Select a bill type.";
@@ -79,22 +80,15 @@ function resetSettingsTotals() {
 }
 settingsReset.addEventListener('click', resetSettingsTotals);
 
-//
-//
-// TODO: FIX THE UPDATE BUTTON
-// VALUES NOT CHANGING ON CLICK
-//
-//
-
 // UPDATE BUTTON
 function updateSettingsValues(init = false) {
 	const revertedSettings = [];
 
 	if (init === true) {
-		settingsCallCost.value = callSettingsCost;
-		settingsSmsCost.value = smsSettingsCost;
-		settingsWarningLevel.value = warningLevel;
-		settingsCriticalLevel.value = criticalLevel;
+		settingsCallCost.value = Number(callSettingsCost);
+		settingsSmsCost.value = Number(smsSettingsCost);
+		settingsWarningLevel.value = Number(warningLevel);
+		settingsCriticalLevel.value = Number(criticalLevel);
 	}
 
 	if (Number(settingsCallCost.value) > 0) {
@@ -102,7 +96,7 @@ function updateSettingsValues(init = false) {
 	} else {
 		message.type = "error";
 		revertedSettings.push("Call cost");
-		settingsCallCost.value = callSettingsCost;
+		settingsCallCost.value = Number(callSettingsCost);
 	}
 
 	if (Number(settingsSmsCost.value) > 0) {
@@ -110,7 +104,7 @@ function updateSettingsValues(init = false) {
 	} else {
 		message.type = "error";
 		revertedSettings.push("SMS cost");
-		settingsSmsCost.value = smsSettingsCost;
+		settingsSmsCost.value = Number(smsSettingsCost);
 	}
 
 	if (Number(settingsWarningLevel.value) < Number(settingsCriticalLevel.value)) {
@@ -119,7 +113,7 @@ function updateSettingsValues(init = false) {
 		} else {
 			message.type = "error";
 			revertedSettings.push("Warning level");
-			settingsWarningLevel.value = warningLevel;
+			settingsWarningLevel.value = Number(warningLevel);
 		}
 
 		if (Number(settingsCriticalLevel.value) > 0) {
@@ -127,13 +121,13 @@ function updateSettingsValues(init = false) {
 		} else {
 			message.type = "error";
 			revertedSettings.push("Critical level");
-			settingsCriticalLevel.value = criticalLevel;
+			settingsCriticalLevel.value = Number(criticalLevel);
 		}
 		message.text = "The following settings have been reverted due to invalid input:";
 		message.text += "<br>" + revertedSettings + ".";
 	} else {
-		settingsWarningLevel.value = warningLevel;
-		settingsCriticalLevel.value = criticalLevel;
+		settingsWarningLevel.value = Number(warningLevel);
+		settingsCriticalLevel.value = Number(criticalLevel);
 		message.type = "error";
 		message.text = "Warning level cannot be less than critical level.";
 		message.text += "<br>Both levels have been reverted.";
