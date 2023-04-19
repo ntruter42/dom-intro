@@ -147,6 +147,10 @@ input[type=radio] {
 	box-shadow: inset 1px 1px !important;
 }
 
+.hidden-spaceholder {
+	visibility: hidden !important;
+}
+
 hr {
 	border-width: 0;
 	border-top: 2px solid #fff;

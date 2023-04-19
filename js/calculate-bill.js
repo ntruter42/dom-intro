@@ -16,6 +16,10 @@ function calculateButtonClicked() {
 	const calculateItems = calculateString.value.split(",");
 	const invalidEntries = [];
 
+	if (calculateReset.innerHTML !== "Reset") {
+		calculateReset.innerHTML = "Reset";
+	}
+
 	let total = 0;
 	for (let item of calculateItems) {
 		item = item.trim().toLowerCase();
@@ -25,7 +29,7 @@ function calculateButtonClicked() {
 			total += 0.75;
 		} else if (calculateItems.length === 1 && item === "") {
 			message.type = "error";
-			message.text = "String must contain at least one entry";
+			message.text = "String must contain at least one entry.";
 		} else {
 			message.type = "warning";
 			message.text = "Invalid entries found - ";
@@ -53,17 +57,29 @@ calculateButton.addEventListener('click', calculateButtonClicked);
 
 function resetCalculateTotals() {
 	console.log(calculateTotal.value);
-	if (calculateTotal.innerHTML === "R0.00") {
-		message.type = "warning";
-		message.text = "Total is already set to R0.00.";
-	} else {
+	if (calculateReset.innerHTML === "Reset") {
+		if (calculateString.value !== "") {
+			calculateReset.innerHTML = "Clear";
+		}
+
 		total = 0;
 		calculateTotal.innerHTML = "R0.00";
 		calculateTotal.classList.remove("warning", "danger");
 		calculateString.focus();
-		
+
 		message.type = "success";
 		message.text = "Totals have been reset.";
+	} else if (calculateReset.innerHTML === "Clear") {
+		calculateReset.innerHTML = " Clear ";
+
+		message.type = "warning";
+		message.text = "Click 'Clear' again to confirm.";
+	} else if (calculateReset.innerHTML === " Clear ") {
+		calculateReset.innerHTML = "Reset";
+
+		calculateString.value = "";
+		message.type = "success";
+		message.text = "Bill string has been cleared.";
 	}
 	message.widget = "calculate-message";
 	displayMessage(message);

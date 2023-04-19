@@ -7,8 +7,15 @@ var message = {
 let displayTimeout;
 
 function displayMessage(widgetMessage) {
+	// FUNCTIONALITY
 	const messageContent = document.getElementById(widgetMessage.widget);
 	const messageBox = messageContent.closest(".message-box");
+	const hiddenSpaceholder = document.querySelector(".hidden-spaceholder");
+
+	// Remove space at the end of web page for Bill with settings
+	if (widgetMessage.type === "settings-message") {
+		hiddenSpaceholder.classList.add("hidden-sm");
+	}
 
 	// Set message box color
 	messageBox.classList.remove("hidden-sm", "success-message", "warning-message", "error-message");
@@ -45,6 +52,11 @@ function displayMessage(widgetMessage) {
 			messageBox.classList.remove("scale", "scale-out");
 		}, 200);
 	}, duration);
+
+	// Add space at the end of web page for Bill with settings
+	if (widgetMessage.type === "settings-message") {
+		hiddenSpaceholder.classList.remove("hidden-sm");
+	}
 
 	// Reset message configuration
 	message = {
